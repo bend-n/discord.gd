@@ -129,10 +129,10 @@ func defer_reply(options: Dictionary = {}):
 		return yield()
 
 	options.type = RESPONSE_TYPES['DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE']
+	deferred = true
 	var res = yield(
 		_send_request('/interactions/%s/%s/callback' % [id, token], options), 'completed'
 	)
-	deferred = true
 	return res
 
 
